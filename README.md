@@ -1,36 +1,76 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# DeFi Wallet Interface Take-Home Assignment
 
-## Getting Started
+A Web3 wallet interface that enables users to connect their wallet, wrap ETH into WETH, and swap WETH for ERC20 tokens using Uniswap V2, with a focus on accurate gas calculations and user experience.
 
-First, run the development server:
+## Local Setup
 
+1. Clone the repository:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/cleanerzkp/front.git
+cd front
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Install dependencies:
+```bash
+# Using npm
+npm install
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+# Using yarn
+yarn install
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+# Using pnpm
+pnpm install
 
-## Learn More
+# Using bun
+bun install
+```
 
-To learn more about Next.js, take a look at the following resources:
+3. Create a `.env` file in the root directory with your API keys:
+```env
+NEXT_PUBLIC_ALCHEMY_API_KEY=your_alchemy_api_key
+NEXT_PUBLIC_ETHERSCAN_API_KEY=your_etherscan_api_key
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+4. Start the development server:
+```bash
+# Using npm
+npm run dev
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
+5. Open [http://localhost:3000](http://localhost:3000) with your browser.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Development Assumptions
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. **Wallet Support**
+   - Primary focus on MetaMask integration
+   - Users have MetaMask installed and are familiar with basic wallet operations
+   - Ethereum Mainnet is the target network
+
+2. **Gas Calculations**
+   - 20% safety buffer added to gas estimates
+   - Gas prices fetched from Alchemy API
+   - Conservative gas limit estimates for different operations
+
+3. **Token Operations**
+   - WETH contract address is fixed to Mainnet
+   - 5% slippage tolerance for swaps
+   - DAI as the primary ERC20 token for swaps
+
+4. **Transaction History**
+   - Limited to last 3 transactions
+   - Mock data used when no transactions are available
+   - Etherscan API used for transaction verification
+
+## Areas for Improvement
+
+Given more time, the following improvements could be implemented:
+
+   - Support for multiple wallet providers
+   - Network switching capabilities
+   - Better wallet error handling
+   - Would have just used walletconnect but wanted to meet the requirements 
+   - Custom token support
+   - Multiple token pair swaps
+   - Advanced slippage controls
+   - Comprehensive test coverage
+   - Better state management
